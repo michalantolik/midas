@@ -1,5 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
+using MidasRatesUpdater.Services;
 
 namespace MidasRatesUpdater
 {
@@ -13,9 +14,17 @@ namespace MidasRatesUpdater
         }
 
         [Function("ExchangeRatesUpdater")]
-        public void Run([TimerTrigger("*/5 * * * * *")] MyInfo myTimer)
+        public async Task Run([TimerTrigger("*/5 * * * * *")] MyInfo myTimer)
         {
-            _logger.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+            _logger.LogInformation($"C# Timer trigger function started execution at: {DateTime.Now}");
+
+            var apiWrapper = new NbpWebApiWrapper();
+            var response = await apiWrapper.GetCurrentExchangeRatesAsync("B");
+            
+            _logger.LogInformation($"{nameof(response.Success), -15}:     {response.Success}");
+            _logger.LogInformation($"{nameof(response.StatusCode),-15}:   {response.StatusCode}");
+            _logger.LogInformation($"{nameof(response.ReasonPhrase),-15}: {response.ReasonPhrase}");
+            _logger.LogInformation($"{nameof(response.Content),-15}:      {response.Content}");
         }
     }
 
