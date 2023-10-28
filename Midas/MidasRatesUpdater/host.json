@@ -1,11 +1,23 @@
+/*************************************************************************************************
+***   host.json                                                                                ***
+**************************************************************************************************
+*                                                                                                *
+* This file lets you configure the Functions host.                                               *
+* These settings apply both when running locally and in Azure.                                   *
+* For more information, see host.json reference.                                                 *
+*                                                                                                *
+*  https://learn.microsoft.com/en-us/azure/azure-functions/functions-host-json                   *
+*                                                                                                *
+*************************************************************************************************/
+
 {
-    "version": "2.0",
-    "logging": {
-        "applicationInsights": {
-            "samplingSettings": {
-                "isEnabled": true,
-                "excludedTypes": "Request"
-            }
-        }
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
     }
+  }
 }
