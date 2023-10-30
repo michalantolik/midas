@@ -1,5 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
+using MidasRatesUpdater.Mapping;
+using MidasRatesUpdater.Services.Database.Entities;
 using MidasRatesUpdater.Services.NbpWebApi;
 
 namespace MidasRatesUpdater
@@ -20,14 +22,12 @@ namespace MidasRatesUpdater
 
             var nbpService = new NbpWebApiService();
             var ratesTable = nbpService.GetCurrentExchangeRatesTable("B");
+            var ratesEntities = ratesTable.ToExchangeRates();
 
-            Console.WriteLine($"{nameof(ratesTable.Table),-15}: {ratesTable.Table}");
-            Console.WriteLine($"{nameof(ratesTable.No),-15}: {ratesTable.No}");
-            Console.WriteLine($"{nameof(ratesTable.EffectiveDate),-15}: {ratesTable.EffectiveDate}");
-
-            foreach (var rate in ratesTable.Rates)
+            Console.WriteLine($"{nameof(ExchangeRate.Id),-6}{nameof(ExchangeRate.Currency),-45}{nameof(ExchangeRate.Code),-8}{nameof(ExchangeRate.Mid),-15}{nameof(ExchangeRate.TableName),-12}{nameof(ExchangeRate.TableNo),-20}{nameof(ExchangeRate.EffectiveDate),-10}\n");
+            foreach (var rate in ratesEntities)
             {
-                Console.WriteLine($"{rate.Code,-5}{rate.Currency,-45}{rate.Mid}\n");
+                Console.WriteLine($"{rate.Id,-6}{rate.Currency,-45}{rate.Code,-8}{rate.Mid,-15}{rate.TableName,-12}{rate.TableNo,-20}{rate.EffectiveDate,-12}\n");
             }
         }
     }
