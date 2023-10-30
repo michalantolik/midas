@@ -3,7 +3,7 @@
 namespace MidasRatesUpdater.Services.NbpWebApi
 {
     /// <summary>
-    /// NBP Web API wrapper.
+    /// Service for accessing NBP Web API.
     /// </summary>
     public interface INbpWebApiService
     {
