@@ -1,6 +1,6 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
-using MidasRatesUpdater.Services;
+using MidasRatesUpdater.Services.NbpWebApi;
 
 namespace MidasRatesUpdater
 {
@@ -18,8 +18,8 @@ namespace MidasRatesUpdater
         {
             _logger.LogInformation($"C# Timer trigger function started execution at: {DateTime.Now}");
 
-            var apiWrapper = new NbpWebApiWrapper();
-            var response = await apiWrapper.GetCurrentExchangeRatesAsync("B");
+            var nbpService = new NbpWebApiService();
+            var response = await nbpService.GetCurrentExchangeRatesAsync("B");
             
             _logger.LogInformation($"{nameof(response.Success), -15}:     {response.Success}");
             _logger.LogInformation($"{nameof(response.StatusCode),-15}:   {response.StatusCode}");

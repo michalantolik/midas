@@ -1,9 +1,9 @@
 ﻿using MidasRatesUpdater.Data;
 
-namespace MidasRatesUpdater.Services
+namespace MidasRatesUpdater.Services.NbpWebApi
 {
     /// <inheritdoc />
-    public class NbpWebApiWrapper : INbpWebApiWrapper
+    public class NbpWebApiService : INbpWebApiService
     {
         /// <inheritdoc />
         public async Task<HttpRepsonseData> GetCurrentExchangeRatesAsync(string table)
