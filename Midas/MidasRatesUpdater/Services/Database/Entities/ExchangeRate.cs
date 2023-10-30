@@ -17,7 +17,6 @@ namespace MidasRatesUpdater.Services.Database.Entities
 
         public string TableName { get; set; }
 
-
         public string TableNo { get; set; }
 
         public string EffectiveDate { get; set; }
