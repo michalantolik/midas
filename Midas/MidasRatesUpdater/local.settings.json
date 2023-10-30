@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+  },
+  "ConnectionStrings": {
+    "MidasRatesSqlConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=MidasRates;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}

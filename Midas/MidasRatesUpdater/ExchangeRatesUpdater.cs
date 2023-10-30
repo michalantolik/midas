@@ -20,8 +20,8 @@ namespace MidasRatesUpdater
 
             var nbpService = new NbpWebApiService();
             var response = await nbpService.GetCurrentExchangeRatesAsync("B");
-            
-            _logger.LogInformation($"{nameof(response.Success), -15}:     {response.Success}");
+
+            _logger.LogInformation($"{nameof(response.Success),-15}:     {response.Success}");
             _logger.LogInformation($"{nameof(response.StatusCode),-15}:   {response.StatusCode}");
             _logger.LogInformation($"{nameof(response.ReasonPhrase),-15}: {response.ReasonPhrase}");
             _logger.LogInformation($"{nameof(response.Content),-15}:      {response.Content}");
