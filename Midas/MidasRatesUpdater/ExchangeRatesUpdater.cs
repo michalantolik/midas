@@ -1,6 +1,8 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using MidasRatesUpdater.Services.NbpWebApi;
+using MidasRatesUpdater.Services.NbpWebApi.Data;
+using System.Text.Json;
 
 namespace MidasRatesUpdater
 {
@@ -21,10 +23,31 @@ namespace MidasRatesUpdater
             var nbpService = new NbpWebApiService();
             var response = nbpService.GetCurrentExchangeRates("B");
 
-            _logger.LogInformation($"{nameof(response.Success),-15}:     {response.Success}");
-            _logger.LogInformation($"{nameof(response.StatusCode),-15}:   {response.StatusCode}");
-            _logger.LogInformation($"{nameof(response.ReasonPhrase),-15}: {response.ReasonPhrase}");
-            _logger.LogInformation($"{nameof(response.Content),-15}:      {response.Content}");
+            Console.WriteLine($"{nameof(response.Success),-15}: {response.Success}");
+            Console.WriteLine($"{nameof(response.StatusCode),-15}: {response.StatusCode}");
+            Console.WriteLine($"{nameof(response.ReasonPhrase),-15}: {response.ReasonPhrase}\n");
+
+            if (response.Success)
+            {
+                var ratesTablesCollection = JsonSerializer.Deserialize<List<RatesTableDto>>(response.Content);
+
+                if (ratesTablesCollection?.SingleOrDefault()?.Rates == null)
+                {
+                    Console.WriteLine($"Problem with NBP Web API deserialization occurred !!!");
+                    return;
+                }
+
+                var ratesTable = ratesTablesCollection.Single();
+
+                Console.WriteLine($"{nameof(ratesTable.Table),-15}: {ratesTable.Table}");
+                Console.WriteLine($"{nameof(ratesTable.No),-15}: {ratesTable.No}");
+                Console.WriteLine($"{nameof(ratesTable.EffectiveDate),-15}: {ratesTable.EffectiveDate}");
+
+                foreach (var rate in ratesTable.Rates)
+                {
+                    Console.WriteLine($"{rate.Code,-5}{rate.Currency,-45}{rate.Mid}\n");
+                }
+            }
         }
     }
 
