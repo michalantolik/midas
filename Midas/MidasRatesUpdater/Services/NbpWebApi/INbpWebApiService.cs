@@ -1,4 +1,4 @@
-﻿using MidasRatesUpdater.Data;
+﻿using MidasRatesUpdater.Services.NbpWebApi.Data;
 
 namespace MidasRatesUpdater.Services.NbpWebApi
 {
@@ -11,7 +11,7 @@ namespace MidasRatesUpdater.Services.NbpWebApi
         /// Retrvies current table of exchange rates of type "table".
         /// </summary>
         /// <param name="table">Table type (A, B, or C)</param>
-        /// <returns>An instance of <see cref="HttpRepsonseData"/></returns>
-        HttpRepsonseData GetCurrentExchangeRates(string table);
+        /// <returns>An instance of <see cref="RatesTableDto"/></returns>
+        RatesTableDto GetCurrentExchangeRatesTable(string table);
     }
 }

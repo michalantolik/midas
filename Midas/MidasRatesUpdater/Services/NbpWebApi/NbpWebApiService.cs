@@ -1,4 +1,5 @@
-﻿using MidasRatesUpdater.Data;
+﻿using MidasRatesUpdater.Services.NbpWebApi.Data;
+using System.Text.Json;
 
 namespace MidasRatesUpdater.Services.NbpWebApi
 {
@@ -6,19 +7,24 @@ namespace MidasRatesUpdater.Services.NbpWebApi
     public class NbpWebApiService : INbpWebApiService
     {
         /// <inheritdoc />
-        public HttpRepsonseData GetCurrentExchangeRates(string table)
+        public RatesTableDto GetCurrentExchangeRatesTable(string table)
         {
             using (var client = new HttpClient())
             {
                 var response = client.GetAsync($"http://api.nbp.pl/api/exchangerates/tables/{table}/").Result;
-
-                return new HttpRepsonseData
+                if (!response.IsSuccessStatusCode)
                 {
-                    Success = response.IsSuccessStatusCode,
-                    StatusCode = response.StatusCode,
-                    ReasonPhrase = response.ReasonPhrase,
-                    Content = response.Content.ReadAsStringAsync().Result
-                };
+                    return new RatesTableDto { Rates = new List<RateDto>() };
+                }
+
+                var ratesTable = JsonSerializer.Deserialize<List<RatesTableDto>>(response.Content.ReadAsStringAsync().Result);
+                if (ratesTable?.SingleOrDefault() == null)
+                {
+                    return new RatesTableDto { Rates = new List<RateDto>() };
+                }
+
+                var result = ratesTable.Single();
+                return result;
             }
         }
     }
