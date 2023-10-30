@@ -12,6 +12,6 @@ namespace MidasRatesUpdater.Services.NbpWebApi
         /// </summary>
         /// <param name="table">Table type (A, B, or C)</param>
         /// <returns>An instance of <see cref="HttpRepsonseData"/></returns>
-        Task<HttpRepsonseData> GetCurrentExchangeRatesAsync(string table);
+        HttpRepsonseData GetCurrentExchangeRates(string table);
     }
 }

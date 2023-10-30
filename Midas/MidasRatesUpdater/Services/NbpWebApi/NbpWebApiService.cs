@@ -6,18 +6,18 @@ namespace MidasRatesUpdater.Services.NbpWebApi
     public class NbpWebApiService : INbpWebApiService
     {
         /// <inheritdoc />
-        public async Task<HttpRepsonseData> GetCurrentExchangeRatesAsync(string table)
+        public HttpRepsonseData GetCurrentExchangeRates(string table)
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync($"http://api.nbp.pl/api/exchangerates/tables/{table}/");
+                var response = client.GetAsync($"http://api.nbp.pl/api/exchangerates/tables/{table}/").Result;
 
                 return new HttpRepsonseData
                 {
                     Success = response.IsSuccessStatusCode,
                     StatusCode = response.StatusCode,
                     ReasonPhrase = response.ReasonPhrase,
-                    Content = await response.Content.ReadAsStringAsync()
+                    Content = response.Content.ReadAsStringAsync().Result
                 };
             }
         }

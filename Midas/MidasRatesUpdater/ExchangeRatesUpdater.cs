@@ -14,12 +14,12 @@ namespace MidasRatesUpdater
         }
 
         [Function("ExchangeRatesUpdater")]
-        public async Task Run([TimerTrigger("*/5 * * * * *")] MyInfo myTimer)
+        public void Run([TimerTrigger("*/5 * * * * *")] MyInfo myTimer)
         {
             _logger.LogInformation($"C# Timer trigger function started execution at: {DateTime.Now}");
 
             var nbpService = new NbpWebApiService();
-            var response = await nbpService.GetCurrentExchangeRatesAsync("B");
+            var response = nbpService.GetCurrentExchangeRates("B");
 
             _logger.LogInformation($"{nameof(response.Success),-15}:     {response.Success}");
             _logger.LogInformation($"{nameof(response.StatusCode),-15}:   {response.StatusCode}");
