@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MidasRatesUpdater.Services.Database.Entities;
 
 namespace MidasRatesUpdater.Services.Database
 {
@@ -16,6 +17,8 @@ namespace MidasRatesUpdater.Services.Database
             Database.EnsureCreated();
         }
 
+        public DbSet<ExchangeRate> ExchangeRates { get; set; }
+
         /// <inheritdoc />
         public void Save()
         {
@@ -26,6 +29,12 @@ namespace MidasRatesUpdater.Services.Database
         {
             var connectionString = _configuration.GetConnectionString(SqlDbConnectionStringName);
             optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            new ExchangeRateConfiguration().Configure(builder.Entity<ExchangeRate>());
         }
     }
 }
