@@ -1,5 +1,5 @@
 ﻿using MidasRatesUpdater.Services.Database.Entities;
-using MidasRatesUpdater.Services.NbpWebApi.Data;
+using MidasRatesUpdater.Services.NbpApi.Data;
 
 namespace MidasRatesUpdater.Mapping
 {

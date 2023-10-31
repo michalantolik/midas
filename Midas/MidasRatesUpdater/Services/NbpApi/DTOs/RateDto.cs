@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MidasRatesUpdater.Services.NbpWebApi.Data
+namespace MidasRatesUpdater.Services.NbpApi.Data
 {
     /// <summary>
     /// DTO which reflects single exchange rate object as read from NBP Web API.

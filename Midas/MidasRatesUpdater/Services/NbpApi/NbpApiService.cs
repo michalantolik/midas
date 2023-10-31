@@ -1,10 +1,10 @@
-﻿using MidasRatesUpdater.Services.NbpWebApi.Data;
+﻿using MidasRatesUpdater.Services.NbpApi.Data;
 using System.Text.Json;
 
-namespace MidasRatesUpdater.Services.NbpWebApi
+namespace MidasRatesUpdater.Services.NbpApi
 {
     /// <inheritdoc />
-    public class NbpWebApiService : INbpWebApiService
+    public class NbpApiService : INbpApiService
     {
         /// <inheritdoc />
         public RatesTableDto GetCurrentExchangeRatesTable(string table)

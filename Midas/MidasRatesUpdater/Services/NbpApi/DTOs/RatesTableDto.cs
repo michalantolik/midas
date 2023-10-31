@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MidasRatesUpdater.Services.NbpWebApi.Data
+namespace MidasRatesUpdater.Services.NbpApi.Data
 {
     /// <summary>
     /// DTO which reflects table of exchange rates as read from NBP Web API.

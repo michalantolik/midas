@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using MidasRatesUpdater.Mapping;
 using MidasRatesUpdater.Services.Database;
 using MidasRatesUpdater.Services.Database.Entities;
-using MidasRatesUpdater.Services.NbpWebApi;
+using MidasRatesUpdater.Services.NbpApi;
 
 namespace MidasRatesUpdater
 {
@@ -25,7 +25,7 @@ namespace MidasRatesUpdater
             _logger.LogInformation($"C# Timer trigger function started execution at: {DateTime.Now}");
 
             // Create NBP Web API service
-            var nbpService = new NbpWebApiService();
+            var nbpService = new NbpApiService();
 
             // Get current exchange rates using NBP service
             var ratesTable = nbpService.GetCurrentExchangeRatesTable("B");

@@ -1,11 +1,11 @@
-﻿using MidasRatesUpdater.Services.NbpWebApi.Data;
+﻿using MidasRatesUpdater.Services.NbpApi.Data;
 
-namespace MidasRatesUpdater.Services.NbpWebApi
+namespace MidasRatesUpdater.Services.NbpApi
 {
     /// <summary>
     /// Service for accessing NBP Web API.
     /// </summary>
-    public interface INbpWebApiService
+    public interface INbpApiService
     {
         /// <summary>
         /// Retrvies current table of exchange rates of type "table".
