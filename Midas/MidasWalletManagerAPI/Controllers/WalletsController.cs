@@ -13,5 +13,11 @@ namespace WalletsAPI.Controllers
         {
             _databaseService = databaseService;
         }
+         
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok();
+        }
     }
 }
