@@ -22,6 +22,14 @@ namespace Persistence.Wallets
 
             builder.Navigation(x => x.Transactions)
                 .AutoInclude();
+
+            builder.HasData(
+                new
+                {
+                    Id = 1,
+                    Name = "Atena"
+                }
+            );
         }
     }
 }

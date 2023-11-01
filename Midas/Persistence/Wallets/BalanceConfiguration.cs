@@ -21,6 +21,30 @@ namespace Persistence.Wallets
             builder.Navigation(x => x.Wallet)
                 .IsRequired()
                 .AutoInclude();
+
+            builder.HasData(
+                new
+                {
+                    Id = 1,
+                    WalletId = 1,
+                    CurrencyCode = "BSD",
+                    Amount = 27225.53m
+                },
+                new
+                {
+                    Id = 2,
+                    WalletId = 1,
+                    CurrencyCode = "KMF",
+                    Amount = 24536.25m
+                },
+                new
+                {
+                    Id = 3,
+                    WalletId = 1,
+                    CurrencyCode = "EGP",
+                    Amount = 29852.98m
+                }
+            ); ;
         }
     }
 }
