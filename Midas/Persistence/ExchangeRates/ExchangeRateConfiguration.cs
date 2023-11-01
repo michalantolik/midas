@@ -17,6 +17,7 @@ namespace Persistence.ExchangeRates
             builder.Property(x => x.TableName).IsRequired();
             builder.Property(x => x.TableNo).IsRequired();
             builder.Property(x => x.EffectiveDate).IsRequired();
+            builder.Property(x => x.CreatedDate).IsRequired();
         }
     }
 }

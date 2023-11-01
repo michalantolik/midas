@@ -20,5 +20,7 @@ namespace Domain.ExchangeRates
         public string TableNo { get; set; }
 
         public string EffectiveDate { get; set; }
+
+        public string CreatedDate { get; set; }
     }
 }

@@ -23,7 +23,8 @@ namespace Mapping
                 Mid = r.Mid,
                 TableName = ratesTable.Table,
                 TableNo = ratesTable.No,
-                EffectiveDate = ratesTable.EffectiveDate
+                EffectiveDate = ratesTable.EffectiveDate,
+                CreatedDate = DateTimeOffset.Now.ToString()
             });
 
             return exchangeRates.ToList();
