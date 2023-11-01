@@ -1,4 +1,5 @@
-using MidasWalletManagerAPI.Services.Database;
+using Application.Interfaces;
+using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 

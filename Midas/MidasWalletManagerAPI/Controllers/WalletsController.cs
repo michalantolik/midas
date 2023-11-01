@@ -1,5 +1,5 @@
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using MidasWalletManagerAPI.Services.Database;
 
 namespace MidasWalletManagerAPI.Controllers
 {
