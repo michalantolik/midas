@@ -1,4 +1,4 @@
-# MidasRatesUpdater
+# ExchangeRatesUpdater
 
 #### Microsoft documentation
 

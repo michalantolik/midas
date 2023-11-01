@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidasRatesUpdater", "MidasRatesUpdater\MidasRatesUpdater.csproj", "{7E8A4775-C659-4FCD-BCAB-73536A4FA6A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeRatesUpdater", "MidasRatesUpdater\ExchangeRatesUpdater.csproj", "{7E8A4775-C659-4FCD-BCAB-73536A4FA6A7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalletsAPI", "MidasWalletManagerAPI\WalletsAPI.csproj", "{B934A7B8-B659-43BC-8AEC-FC9CD0849C98}"
 EndProject

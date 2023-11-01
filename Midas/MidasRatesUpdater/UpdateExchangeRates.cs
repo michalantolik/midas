@@ -5,20 +5,20 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Persistence;
 
-namespace MidasRatesUpdater
+namespace ExchangeRatesUpdater
 {
-    public class ExchangeRatesUpdater
+    public class UpdateExchangeRates
     {
         private readonly ILogger _logger;
         private readonly IConfiguration _configuration;
 
-        public ExchangeRatesUpdater(ILoggerFactory loggerFactory, IConfiguration configuration)
+        public UpdateExchangeRates(ILoggerFactory loggerFactory, IConfiguration configuration)
         {
-            _logger = loggerFactory.CreateLogger<ExchangeRatesUpdater>();
+            _logger = loggerFactory.CreateLogger<UpdateExchangeRates>();
             _configuration = configuration;
         }
 
-        [Function("ExchangeRatesUpdater")]
+        [Function("UpdateExchangeRates")]
         public void Run([TimerTrigger("*/5 * * * * *")] MyInfo myTimer)
         {
             _logger.LogInformation($"C# Timer trigger function started execution at: {DateTime.Now}");
