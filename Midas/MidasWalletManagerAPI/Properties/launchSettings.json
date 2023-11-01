@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "MidasWalletManagerAPI": {
+    "WalletsAPI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

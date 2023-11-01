@@ -5,19 +5,19 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidasRatesUpdater", "MidasRatesUpdater\MidasRatesUpdater.csproj", "{7E8A4775-C659-4FCD-BCAB-73536A4FA6A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidasWalletManagerAPI", "MidasWalletManagerAPI\MidasWalletManagerAPI.csproj", "{B934A7B8-B659-43BC-8AEC-FC9CD0849C98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalletsAPI", "MidasWalletManagerAPI\WalletsAPI.csproj", "{B934A7B8-B659-43BC-8AEC-FC9CD0849C98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{68B84105-02C6-41F0-8A23-996A68013D7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{68B84105-02C6-41F0-8A23-996A68013D7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{9093CE3A-BE89-4F66-B92E-34998A15DC60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{9093CE3A-BE89-4F66-B92E-34998A15DC60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{B46F45BF-FF69-4586-9605-DD7922474917}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{B46F45BF-FF69-4586-9605-DD7922474917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{EAFA677B-7607-43F6-B48A-92869C820C41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{EAFA677B-7607-43F6-B48A-92869C820C41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{250B3EFB-6787-4F61-BE1A-E5717913EC3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{250B3EFB-6787-4F61-BE1A-E5717913EC3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapping", "Mapping\Mapping.csproj", "{38DF4A83-9D9D-4352-9B66-19189BA1A8CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mapping", "Mapping\Mapping.csproj", "{38DF4A83-9D9D-4352-9B66-19189BA1A8CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MidasWalletManagerAPI.Controllers
+namespace WalletsAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
