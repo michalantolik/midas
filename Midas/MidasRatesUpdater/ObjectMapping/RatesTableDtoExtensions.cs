@@ -1,7 +1,7 @@
 ﻿using MidasRatesUpdater.Services.Database.Entities;
 using MidasRatesUpdater.Services.NbpApi.Data;
 
-namespace MidasRatesUpdater.Mapping
+namespace MidasRatesUpdater.ObjectMapping
 {
     /// <summary>
     /// Extension methods used to map DTO objects of type <see cref="RatesTableDto"/> into Entity Framework entities.

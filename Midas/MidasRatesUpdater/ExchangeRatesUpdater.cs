@@ -1,7 +1,7 @@
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using MidasRatesUpdater.Mapping;
+using MidasRatesUpdater.ObjectMapping;
 using MidasRatesUpdater.Services.Database;
 using MidasRatesUpdater.Services.Database.Entities;
 using MidasRatesUpdater.Services.NbpApi;
