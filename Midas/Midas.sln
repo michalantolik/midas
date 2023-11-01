@@ -7,6 +7,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidasRatesUpdater", "MidasR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidasWalletManagerAPI", "MidasWalletManagerAPI\MidasWalletManagerAPI.csproj", "{B934A7B8-B659-43BC-8AEC-FC9CD0849C98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{68B84105-02C6-41F0-8A23-996A68013D7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{9093CE3A-BE89-4F66-B92E-34998A15DC60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{B46F45BF-FF69-4586-9605-DD7922474917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{EAFA677B-7607-43F6-B48A-92869C820C41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{250B3EFB-6787-4F61-BE1A-E5717913EC3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapping", "Mapping\Mapping.csproj", "{38DF4A83-9D9D-4352-9B66-19189BA1A8CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +33,30 @@ Global
 		{B934A7B8-B659-43BC-8AEC-FC9CD0849C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B934A7B8-B659-43BC-8AEC-FC9CD0849C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B934A7B8-B659-43BC-8AEC-FC9CD0849C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B84105-02C6-41F0-8A23-996A68013D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B84105-02C6-41F0-8A23-996A68013D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B84105-02C6-41F0-8A23-996A68013D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B84105-02C6-41F0-8A23-996A68013D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9093CE3A-BE89-4F66-B92E-34998A15DC60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9093CE3A-BE89-4F66-B92E-34998A15DC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9093CE3A-BE89-4F66-B92E-34998A15DC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9093CE3A-BE89-4F66-B92E-34998A15DC60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46F45BF-FF69-4586-9605-DD7922474917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46F45BF-FF69-4586-9605-DD7922474917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46F45BF-FF69-4586-9605-DD7922474917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46F45BF-FF69-4586-9605-DD7922474917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAFA677B-7607-43F6-B48A-92869C820C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAFA677B-7607-43F6-B48A-92869C820C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAFA677B-7607-43F6-B48A-92869C820C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAFA677B-7607-43F6-B48A-92869C820C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{250B3EFB-6787-4F61-BE1A-E5717913EC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{250B3EFB-6787-4F61-BE1A-E5717913EC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{250B3EFB-6787-4F61-BE1A-E5717913EC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{250B3EFB-6787-4F61-BE1A-E5717913EC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DF4A83-9D9D-4352-9B66-19189BA1A8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DF4A83-9D9D-4352-9B66-19189BA1A8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DF4A83-9D9D-4352-9B66-19189BA1A8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DF4A83-9D9D-4352-9B66-19189BA1A8CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
