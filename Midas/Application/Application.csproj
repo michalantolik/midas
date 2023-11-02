@@ -16,8 +16,4 @@
     <ProjectReference Include="..\Mapping\Mapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ExchangeRates\Queries\" />
-  </ItemGroup>
-
 </Project>
