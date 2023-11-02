@@ -1,4 +1,3 @@
-using Application.Interfaces;
 using Application.Wallets.Queries.GetWalletsList;
 using Data.Wallets;
 using Microsoft.AspNetCore.Mvc;
@@ -10,20 +9,27 @@ namespace WalletsAPI.Controllers
     [Route("api/[controller]")]
     public class WalletsController : ControllerBase
     {
-        private readonly IDatabaseService _databaseService;
         private readonly IGetWalletsListQuery _getWalletsListQuery;
 
-        public WalletsController(IDatabaseService databaseService, IGetWalletsListQuery getWalletsListQuery)
+        public WalletsController(IGetWalletsListQuery getWalletsListQuery)
         {
-            _databaseService = databaseService;
             _getWalletsListQuery = getWalletsListQuery;
         }
 
         // GET: api/wallets
-        [HttpGet]
-        public ActionResult<IEnumerable<WalletWithBalancesDto>> Get()
+        [HttpGet()]
+        public ActionResult<IEnumerable<WalletWithBalancesDto>> GetAllWallets()
         {
             var dtos = _getWalletsListQuery.Execute();
+
+            return Ok(dtos);
+        }
+
+        // GET: api/wallets/{walletId}
+        [HttpGet("{walletId}")]
+        public ActionResult<IEnumerable<WalletWithBalancesDto>> GetOneWallet(int walletId)
+        {
+            var dtos = _getWalletsListQuery.Execute(walletId);
 
             return Ok(dtos);
         }

@@ -5,6 +5,6 @@ namespace Application.Wallets.Queries.GetWalletsList
 {
     public interface IGetWalletsListQuery
     {
-        List<WalletWithBalancesDto> Execute();
+        List<WalletWithBalancesDto> Execute(int? id = null);
     }
 }
