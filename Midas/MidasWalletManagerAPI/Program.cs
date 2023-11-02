@@ -1,4 +1,6 @@
+using Application.ExchangeRates.Commands.UpdateExchangeRates;
 using Application.Interfaces;
+using Application.Wallets.Commands.DepositRequest;
 using Application.Wallets.Queries.GetWalletsList;
 using Persistence;
 
@@ -19,6 +21,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 builder.Services.AddScoped<IGetWalletsListQuery, GetWalletsListQuery>();
+builder.Services.AddScoped<IDepositRequestCommand, DepositRequestCommand>();
 
 // ----------------------------------------------------------------------------------------
 // Configure the HTTP request pipeline.

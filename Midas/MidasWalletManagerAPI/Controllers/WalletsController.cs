@@ -1,6 +1,8 @@
+using Application.Wallets.Commands.DepositRequest;
 using Application.Wallets.Queries.GetWalletsList;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace WalletsAPI.Controllers
 {
@@ -9,10 +11,14 @@ namespace WalletsAPI.Controllers
     public class WalletsController : ControllerBase
     {
         private readonly IGetWalletsListQuery _getWalletsListQuery;
+        private readonly IDepositRequestCommand _depositRequestCommand;
 
-        public WalletsController(IGetWalletsListQuery getWalletsListQuery)
+        public WalletsController(
+            IGetWalletsListQuery getWalletsListQuery,
+            IDepositRequestCommand depositRequestCommand)
         {
             _getWalletsListQuery = getWalletsListQuery;
+            _depositRequestCommand = depositRequestCommand;
         }
 
         // GET: api/wallets
@@ -31,6 +37,15 @@ namespace WalletsAPI.Controllers
             var dtos = _getWalletsListQuery.Execute(walletId);
 
             return Ok(dtos);
+        }
+
+        // POST: api/wallets/deposit
+        [HttpPost("deposit")]
+        public IActionResult DepositMoney([FromBody] DepositRequestModel model)
+        {
+            var succeeded = _depositRequestCommand.Execute(model);
+
+            return succeeded ? Ok() : BadRequest();
         }
     }
 }
