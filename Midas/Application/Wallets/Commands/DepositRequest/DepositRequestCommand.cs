@@ -82,7 +82,9 @@ namespace Application.Wallets.Commands.DepositRequest
                 _database.Trasactions.Add(newTransaction);
                 _database.Save();
 
-                return Ok(wallet);
+                var newAmount = wallet.Balances.Single(balance => balance.CurrencyCode == model.CurrencyCode).Amount;
+
+                return Ok($"You deposited: {model.Amount} {model.CurrencyCode} \nBalance after deposit: {newAmount} {model.CurrencyCode}");
             }
             catch (Exception ex)
             {
