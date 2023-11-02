@@ -1,11 +1,12 @@
 ﻿using Application.Interfaces;
 using Domain.Wallets;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 
 namespace Application.Wallets.Commands.DepositRequest
 {
-    public class DepositRequestCommand : IDepositRequestCommand
+    public class DepositRequestCommand : ControllerBase, IDepositRequestCommand
     {
         private readonly IDatabaseService _database;
 
@@ -14,12 +15,12 @@ namespace Application.Wallets.Commands.DepositRequest
             _database = database;
         }
 
-        public bool Execute(DepositRequestModel model)
+        public IActionResult Execute(DepositRequestModel model)
         {
             // Null model
             if (model == null)
             {
-                return false;
+                return BadRequest($"Request data is null --> You must provide \"{nameof(DepositRequestModel)} {nameof(model)}\"");
             }
 
             // Convert currency code to upper (like it is stored in DB)
@@ -29,57 +30,64 @@ namespace Application.Wallets.Commands.DepositRequest
             var availableCurrencies = _database.ExchangeRates.Select(r => r.Code).ToList();
             if (!availableCurrencies.Contains(model.CurrencyCode))
             {
-                return false;
+                return BadRequest($"Currency is not supported --> {nameof(model.CurrencyCode)}: \"{model.CurrencyCode}\"");
             }
 
             // Request amount incorrect
             if (model.Amount <= 0)
             {
-                return false;
+                return BadRequest($"Deposit amount is incorrect --> {nameof(model.Amount)}: \"{model.Amount}\" --> Must be greater than 0");
             }
 
             // Wallet not found
             var wallet = _database.Wallets.SingleOrDefault(wallet => wallet.Id == model.WalletId);
             if (wallet == null)
             {
-                return false;
+                return NotFound($"Wallet not found --> {nameof(model.WalletId)}: \"{model.WalletId}\"");
             }
 
-            // Wallet found
-            var balance = wallet.Balances.SingleOrDefault(balance => balance.CurrencyCode == model.CurrencyCode);
-            if (balance == null)
+            try
             {
-                // Balance does not exist
-                var newBalance = new Balance
+                // Wallet found
+                var balance = wallet.Balances.SingleOrDefault(balance => balance.CurrencyCode == model.CurrencyCode);
+                if (balance == null)
                 {
+                    // Balance does not exist
+                    var newBalance = new Balance
+                    {
+                        CurrencyCode = model.CurrencyCode,
+                        Amount = model.Amount
+                    };
+                    wallet.Balances.Add(newBalance);
+                    _database.Save();
+                }
+                else
+                {
+                    // Balance exists
+                    balance.Amount += model.Amount;
+                    _database.Save();
+                }
+
+                // Wallet balance updated
+
+                // Add transaction entry
+                var newTransaction = new Transaction
+                {
+                    Wallet = wallet,
+                    TransactionType = TransactionType.Deposit,
                     CurrencyCode = model.CurrencyCode,
-                    Amount = model.Amount
+                    Amount = model.Amount,
+                    Timestamp = DateTimeOffset.Now
                 };
-                wallet.Balances.Add(newBalance);
+                _database.Trasactions.Add(newTransaction);
                 _database.Save();
+
+                return Ok(wallet);
             }
-            else
+            catch (Exception ex)
             {
-                // Balance exists
-                balance.Amount += model.Amount;
-                _database.Save();
+                return StatusCode(500, $"Server error occurred while processing the request --> Message: \"{ex.Message}\"");
             }
-
-            // Wallet balance updated
-
-            // Add transaction entry
-            var newTransaction = new Transaction
-            {
-                Wallet = wallet,
-                TransactionType = TransactionType.Deposit,
-                CurrencyCode = model.CurrencyCode,
-                Amount = model.Amount,
-                Timestamp = DateTimeOffset.Now
-            };
-            _database.Trasactions.Add(newTransaction);
-            _database.Save();
-
-            return true;
         }
     }
 }

@@ -46,9 +46,9 @@ namespace WalletsAPI.Controllers
         [HttpPost("deposit")]
         public IActionResult DepositMoney([FromBody] DepositRequestModel model)
         {
-            var succeeded = _depositRequestCommand.Execute(model);
+            var result = _depositRequestCommand.Execute(model);
 
-            return succeeded ? Ok() : BadRequest();
+            return result;
         }
 
         // POST: api/wallets/withdraw

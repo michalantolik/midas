@@ -1,7 +1,9 @@
-﻿namespace Application.Wallets.Commands.DepositRequest
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Application.Wallets.Commands.DepositRequest
 {
     public interface IDepositRequestCommand
     {
-        bool Execute(DepositRequestModel model);
+        IActionResult Execute(DepositRequestModel model);
     }
 }
