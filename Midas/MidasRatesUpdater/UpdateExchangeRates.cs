@@ -1,4 +1,4 @@
-using Application.ExchangeRates.Commands;
+using Application.ExchangeRates.Commands.UpdateExchangeRates;
 using Infrastructure;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;

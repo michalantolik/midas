@@ -1,6 +1,6 @@
 ﻿using Data.ExchangeRates;
 
-namespace Application.ExchangeRates.Commands
+namespace Application.ExchangeRates.Commands.UpdateExchangeRates
 {
     /// <summary>
     /// Interface for updating ExchangeRates table in the Database.

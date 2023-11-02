@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces;
 
-namespace Application.ExchangeRates.Commands
+namespace Application.ExchangeRates.Commands.UpdateExchangeRates
 {
     public static class UpdateExchangeRatesCommandFactory
     {

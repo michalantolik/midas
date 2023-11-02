@@ -2,7 +2,7 @@
 using Data.ExchangeRates;
 using Mapping;
 
-namespace Application.ExchangeRates.Commands
+namespace Application.ExchangeRates.Commands.UpdateExchangeRates
 {
     public class UpdateExchangeRatesCommand : IUpdateExchangeRatesCommand
     {
