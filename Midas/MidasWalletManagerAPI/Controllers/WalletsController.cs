@@ -55,9 +55,9 @@ namespace WalletsAPI.Controllers
         [HttpPost("withdraw")]
         public IActionResult WithdrawMoney([FromBody] WithdrawRequestModel model)
         {
-            var succeeded = _withdrawRequestCommand.Execute(model);
+            var result = _withdrawRequestCommand.Execute(model);
 
-            return succeeded ? Ok() : BadRequest();
+            return result;
         }
     }
 }

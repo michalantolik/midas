@@ -1,7 +1,9 @@
-﻿namespace Application.Wallets.Commands.WithdrawRequest
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Application.Wallets.Commands.WithdrawRequest
 {
     public interface IWithdrawRequestCommand
     {
-        bool Execute(WithdrawRequestModel model);
+        IActionResult Execute(WithdrawRequestModel model);
     }
 }
