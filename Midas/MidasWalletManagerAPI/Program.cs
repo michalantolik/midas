@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Application.Wallets.Queries.GetWalletsList;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,7 @@ builder.Services.AddSwaggerGen();
 // ----------------------------------------------------------------------------------------
 
 builder.Services.AddScoped<IDatabaseService, DatabaseService>();
+builder.Services.AddScoped<IGetWalletsListQuery, GetWalletsListQuery>();
 
 // ----------------------------------------------------------------------------------------
 // Configure the HTTP request pipeline.

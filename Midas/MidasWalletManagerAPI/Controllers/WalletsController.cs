@@ -1,5 +1,8 @@
 using Application.Interfaces;
+using Application.Wallets.Queries.GetWalletsList;
+using Data.Wallets;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace WalletsAPI.Controllers
 {
@@ -8,16 +11,21 @@ namespace WalletsAPI.Controllers
     public class WalletsController : ControllerBase
     {
         private readonly IDatabaseService _databaseService;
+        private readonly IGetWalletsListQuery _getWalletsListQuery;
 
-        public WalletsController(IDatabaseService databaseService)
+        public WalletsController(IDatabaseService databaseService, IGetWalletsListQuery getWalletsListQuery)
         {
             _databaseService = databaseService;
+            _getWalletsListQuery = getWalletsListQuery;
         }
-         
+
+        // GET: api/wallets
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<IEnumerable<WalletWithBalancesDto>> Get()
         {
-            return Ok();
+            var dtos = _getWalletsListQuery.Execute();
+
+            return Ok(dtos);
         }
     }
 }
