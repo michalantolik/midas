@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace WalletsAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/wallets")]
     public class WalletsController : ControllerBase
     {
         private readonly IGetWalletsListQuery _getWalletsListQuery;
