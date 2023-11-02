@@ -1,5 +1,4 @@
 using Application.Wallets.Queries.GetWalletsList;
-using Data.Wallets;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -18,7 +17,7 @@ namespace WalletsAPI.Controllers
 
         // GET: api/wallets
         [HttpGet()]
-        public ActionResult<IEnumerable<WalletWithBalancesDto>> GetAllWallets()
+        public ActionResult<IEnumerable<WalletWithBalancesModel>> GetAllWallets()
         {
             var dtos = _getWalletsListQuery.Execute();
 
@@ -27,7 +26,7 @@ namespace WalletsAPI.Controllers
 
         // GET: api/wallets/{walletId}
         [HttpGet("{walletId}")]
-        public ActionResult<IEnumerable<WalletWithBalancesDto>> GetOneWallet(int walletId)
+        public ActionResult<IEnumerable<WalletWithBalancesModel>> GetOneWallet(int walletId)
         {
             var dtos = _getWalletsListQuery.Execute(walletId);
 

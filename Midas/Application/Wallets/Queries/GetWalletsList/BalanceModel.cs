@@ -1,6 +1,6 @@
-﻿namespace Data.Wallets
+﻿namespace Application.Wallets.Queries.GetWalletsList
 {
-    public class BalanceDto
+    public class BalanceModel
     {
         public int Id { get; set; }
 
