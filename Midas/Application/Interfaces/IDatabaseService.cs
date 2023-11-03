@@ -1,6 +1,7 @@
 ﻿using Domain.ExchangeRates;
 using Domain.Wallets;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Application.Interfaces
 {
