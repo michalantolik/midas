@@ -1,5 +1,6 @@
-using Application.ExchangeRates.Commands.UpdateExchangeRates;
+using Application.CurrencyConversion;
 using Application.Interfaces;
+using Application.Wallets.Commands.ConvertRequest;
 using Application.Wallets.Commands.DepositRequest;
 using Application.Wallets.Commands.WithdrawRequest;
 using Application.Wallets.Queries.GetWalletsList;
@@ -24,6 +25,8 @@ builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 builder.Services.AddScoped<IGetWalletsListQuery, GetWalletsListQuery>();
 builder.Services.AddScoped<IDepositRequestCommand, DepositRequestCommand>();
 builder.Services.AddScoped<IWithdrawRequestCommand, WithdrawRequestCommand>();
+builder.Services.AddScoped<IConvertRequestCommand, ConvertRequestCommand>();
+builder.Services.AddScoped<ICurrencyConverter, CurrencyConverter>();
 
 // ----------------------------------------------------------------------------------------
 // Configure the HTTP request pipeline.

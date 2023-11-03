@@ -1,3 +1,4 @@
+using Application.Wallets.Commands.ConvertRequest;
 using Application.Wallets.Commands.DepositRequest;
 using Application.Wallets.Commands.WithdrawRequest;
 using Application.Wallets.Queries.GetWalletsList;
@@ -13,15 +14,18 @@ namespace WalletsAPI.Controllers
         private readonly IGetWalletsListQuery _getWalletsListQuery;
         private readonly IDepositRequestCommand _depositRequestCommand;
         private readonly IWithdrawRequestCommand _withdrawRequestCommand;
+        private readonly IConvertRequestCommand _convertRequestCommand;
 
         public WalletsController(
             IGetWalletsListQuery getWalletsListQuery,
             IDepositRequestCommand depositRequestCommand,
-            IWithdrawRequestCommand withdrawRequestCommand)
+            IWithdrawRequestCommand withdrawRequestCommand,
+            IConvertRequestCommand convertRequestCommand)
         {
             _getWalletsListQuery = getWalletsListQuery;
             _depositRequestCommand = depositRequestCommand;
             _withdrawRequestCommand = withdrawRequestCommand;
+            _convertRequestCommand = convertRequestCommand;
         }
 
         // GET: api/wallets
@@ -56,6 +60,15 @@ namespace WalletsAPI.Controllers
         public IActionResult WithdrawMoney([FromBody] WithdrawRequestModel model)
         {
             var result = _withdrawRequestCommand.Execute(model);
+
+            return result;
+        }
+
+        // POST: api/wallets/convert
+        [HttpPost("convert")]
+        public IActionResult ConvertMoney([FromBody] ConvertRequestModel model)
+        {
+            var result = _convertRequestCommand.Execute(model);
 
             return result;
         }
