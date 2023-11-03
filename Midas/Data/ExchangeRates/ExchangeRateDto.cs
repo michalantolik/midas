@@ -14,6 +14,6 @@ namespace Data.ExchangeRates
         public string Code { get; set; }
 
         [JsonPropertyName("mid")]
-        public double Mid { get; set; }
+        public decimal Mid { get; set; }
     }
 }

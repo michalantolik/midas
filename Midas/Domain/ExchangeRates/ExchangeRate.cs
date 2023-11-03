@@ -13,7 +13,7 @@ namespace Domain.ExchangeRates
 
         public string Code { get; set; }
 
-        public double Mid { get; set; }
+        public decimal Mid { get; set; }
 
         public string TableName { get; set; }
 
