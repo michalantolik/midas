@@ -112,3 +112,61 @@ Overview:
 - For productions system, it should be enough to download exchange rates once a week
 - This is due to [Dates of NBP currency exchange rates publication](https://nbp.pl/en/statistic-and-financial-reporting/rates/dates-of-nbp-currency-exchange-rates-publication/) for Table B
 - You can configure refresh period by updating Azure Function `TimerTrigger` in [UpdateExchangeRates.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasRatesUpdater/UpdateExchangeRates.cs)
+
+## Brainstorming on Future considerations
+
+### How the application could be deployed on the Azure platform, including which services to use.
+
+#### Azure Services
+
+- **Azure Functions** or **Azure Logic Apps** to periodically download exchange rates from NBP Web API
+- **Azure SQL Database** or **Azure Cosmos DB** to store exchange rates and wallets
+- **Azure App Service** to deploy WalletAPI project (.NET Web API) or refactor and deploy each API method as independent **Azure Function**
+- **Azure API Management** to manage Wallet Web API
+- **Azure Container Instances** or **Azure Kubernetes Service** to run containerized application (would require big refactor)
+
+#### Deployment methods
+
+- Publish from IDE (VS 2022, VS Code)
+- Deploy directly from Azure Portal
+- Deploy using ARM or BICEP templates
+- Deploy using Azure CLI or Azure PowerShell
+- Set up CI/CD using Azure DevOps pipelines or Jenkins or GitHub Actions
+
+### How to ensure good performance of the system in case of large number of transactions
+
+1. Consider database optimization
+    - Use Azure SQL Database Geo-Replication
+    - Use fast database: NoSQL databases like Azure Cosmos DB for scalability and low-latency access
+    - Optimize structure of database itself
+    - Optimize the way we access DB (EF Core impact, can it be improved? is there faster way?)
+      
+2. Auto-Scaling
+    - Set proper auto-scaling rules for Azure service that you use to deploy the system to
+    - Rework system to microservices, deploy to AKS for automatic scaling
+  
+3. Optimize code, algorithms, data structure
+    - Find weak points in the code itself, what it slow and improve it
+  
+4. Secure system DDoS attacks
+    - Azure DDoS Protection
+  
+### How to report transactions to external systems
+
+- It depends on the interface (API) of external system
+- External system can expose Web API method that we would use to report transaction (post)
+- In case we own both systems, we can design how to interface the other system ...
+- ... and e.g. report transactions using **Azure Service Bus** message queue
+
+### How to ensure that a transaction in "Midas" system is not "approved" until the external system accepts it
+
+- System registers transaction request in own DB in "pending" state
+- System sends trasaction approval request to external system
+- System updates transaction state in own DB from "pending" to "approved" or "rejected" depending on the answer
+- Azure Service Bus can be used to implement message queue using Azure Service Bus ...
+- ... transactions can be sent to external systems via messages ...
+- ... only consider the transaction approved in your system after receiving a confirmation message back from the external system
+
+## To do
+
+- Unit tests
