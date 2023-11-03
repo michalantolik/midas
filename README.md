@@ -77,3 +77,30 @@ Overview:
 <img src="https://michalantolik.blob.core.windows.net/midas/azure_function_running.png" width=600/>
 7. Swagger page for testing WalletAPI - make your calls here and observe changes in your SQL Local DB:<br/><br/>
 <img src="https://michalantolik.blob.core.windows.net/midas/web_api_running.png" width=600/>
+
+## Browsing Midas Database
+
+- You need to connect to `(localdb)\MSMSQLLocalDB` using any tool.<br/>
+- E.g. you can use Microsoft SQL Server Management Studio 👉 [Download SSMS](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)<br/>
+- Other example tools: VS 2022 SQL Server Object Explorer, LINQPad
+
+<img src="https://michalantolik.blob.core.windows.net/midas/SSMS_connect_to_sql_server.png" width=350/><br/>
+<img src="https://michalantolik.blob.core.windows.net/midas/midas_database.png" width=350/>
+
+## Initial content of the Midas Database
+
+- Once, run the solution, Midas database will be created (if not exist).
+- Database will be seeded with example wallet (with example transactions)
+- ExchangeRates table will be periodcally updated by downloading exchange rates using NBP Web API
+
+### Wallets
+<img src="https://michalantolik.blob.core.windows.net/midas/wallets.png" width=700/>
+
+### Balances
+<img src="https://michalantolik.blob.core.windows.net/midas/balances.png" width=700/>
+
+### Transactions
+<img src="https://michalantolik.blob.core.windows.net/midas/transactions.png" width=700/>
+
+### Exchange Rates
+<img src="https://michalantolik.blob.core.windows.net/midas/exchange_rates.png" width=700/>
