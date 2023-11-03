@@ -170,3 +170,4 @@ Overview:
 ## To do
 
 - Unit tests
+- Azure Deployment
