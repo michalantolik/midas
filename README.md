@@ -169,5 +169,6 @@ Overview:
 
 ## To do
 
-- Unit tests
-- Azure Deployment
+- Draw high level architecture diagrams
+- Write unit tests
+- Deploy to Azure
