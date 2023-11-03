@@ -104,3 +104,11 @@ Overview:
 
 ### Exchange Rates
 <img src="https://michalantolik.blob.core.windows.net/midas/exchange_rates.png" width=700/>
+
+## Exchange Rates refresh period
+
+- This repository is set to download exchange rates from NBP Web API every 30 seconds
+- This refresh rate is set to 30 seconds, so that you can make sure that it really works
+- For productions system, it should be enough to download exchange rates once a week
+- This is due to [Dates of NBP currency exchange rates publication](https://nbp.pl/en/statistic-and-financial-reporting/rates/dates-of-nbp-currency-exchange-rates-publication/) for Table B
+- You can configure refresh period by updating Azure Function `TimerTrigger` in [UpdateExchangeRates.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasRatesUpdater/UpdateExchangeRates.cs)
