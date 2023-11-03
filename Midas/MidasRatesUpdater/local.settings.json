@@ -4,6 +4,6 @@
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
   },
   "ConnectionStrings": {
-    "MidasRatesSqlConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=MidasRates;Trusted_Connection=True;MultipleActiveResultSets=true"
+    "MidasRatesSqlConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=Midas;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
 }
