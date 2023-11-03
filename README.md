@@ -54,9 +54,26 @@ Overview:
 - Database access is done through EF Core 6.0 using CQRS (commands and queries)
 - Web API methods are very "thin" and just call commands and queries (the whole logic is there)
 
+## Core classes (entry points)
+
+- Downloading exchange rates from NBP Web API: [UpdateExchangeRates.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasRatesUpdater/UpdateExchangeRates.cs)
+- Deposit/Withdraw/Convert money in/from wallet: [WalletsController.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasWalletManagerAPI/Controllers/WalletsController.cs)
+
 ## How to run and test this repository locally
 
 ### Prerequisites
 
 - Visual Studio 2022 (with Azure workload installed) + .NET 6 SDK
 - Visual Studio 2022 (or Microsoft SQL Server Management Studio) for browsing MS SQL Local DB
+
+### Running from Visual Studio
+
+1. Open `Midas.sln` in VS 2022.
+2. Right-click solution 👉 Properties 👉 configure "Multiple startup projects" like this 👉 press "OK"
+<img src="https://michalantolik.blob.core.windows.net/midas/how_to_run_2.png" width=600/>
+4. Press F5 in VS 2022 to start solution.<br/>
+5. Solution will be built and two windows will appear.<br/>
+6. Azure Function which updates Exchange Rates DB every 30 second by downloading them from NBP Web API:<br/><br/>
+<img src="https://michalantolik.blob.core.windows.net/midas/azure_function_running.png" width=600/>
+7. Swagger page for testing WalletAPI - make your calls here and observe changes in your SQL Local DB:<br/><br/>
+<img src="https://michalantolik.blob.core.windows.net/midas/web_api_running.png" width=600/>
