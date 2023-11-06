@@ -2,6 +2,6 @@
 {
     public class CreateWalletModel
     {
-        public string Name { get; set; }
+        public string WalletName { get; set; }
     }
 }

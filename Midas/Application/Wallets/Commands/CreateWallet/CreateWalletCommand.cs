@@ -21,23 +21,29 @@ namespace Application.Wallets.Commands.DepositRequest
                 return BadRequest($"Request data is null --> You must provide \"{nameof(CreateWalletModel)} {nameof(model)}\"");
             }
 
-            // Null model
-            if (String.IsNullOrEmpty(model.Name) || !StartsWithLetter(model.Name) || !IsAlphanumeric(model.Name))
+            // Incorrent name
+            if (String.IsNullOrEmpty(model.WalletName) || !StartsWithLetter(model.WalletName) || !IsAlphanumeric(model.WalletName))
             {
-                return BadRequest($"Request data is null --> \"{nameof(model.Name)}: {model.Name}\" --> Wallet name must be alphanumeric and must start from letter.");
+                return BadRequest($"Request data is null --> \"{nameof(model.WalletName)}: {model.WalletName}\" --> Wallet name must be alphanumeric and must start from letter.");
+            }
+
+            // Forbidden wallet name
+            if (model.WalletName.ToLower() == "string")
+            {
+                return BadRequest($"A wallet cannot be called \"{model.WalletName}\" --> This name is forbidden. Please provide other name.");
             }
 
             // Wallet already exists
-            var walletAlreadyExists = _database.Wallets.SingleOrDefault(w => w.Name == model.Name) != null;
+            var walletAlreadyExists = _database.Wallets.SingleOrDefault(w => w.Name.ToLower() == model.WalletName.ToLower()) != null;
             if (walletAlreadyExists)
             {
-                return Conflict($"Cannot create wallet with name \"{model.Name}\". Wallet with such name already exists!");
+                return Conflict($"Cannot create wallet with name \"{model.WalletName.ToLower()}\". Wallet with such name already exists!");
             }
 
             try
             {
                 // Creating new wallet
-                var newWallet = new Wallet { Name = model.Name };
+                var newWallet = new Wallet { Name = model.WalletName };
                 _database.Wallets.Add(newWallet);
                 _database.Save();
 
