@@ -53,7 +53,7 @@ namespace WalletsAPI.Controllers
             return Ok(dtos);
         }
 
-        // POST: api/wallets/create
+        // POST: api/wallets/create/{walletName}
         [HttpPost("create/{walletName}")]
         public IActionResult CreateWallet(string walletName)
         {
@@ -64,7 +64,7 @@ namespace WalletsAPI.Controllers
             return result;
         }
 
-        // POST: api/wallets/delete
+        // POST: api/wallets/delete/{walletId}
         [HttpPost("delete/{walletId}")]
         public IActionResult DeleteWallet(int walletId)
         {
