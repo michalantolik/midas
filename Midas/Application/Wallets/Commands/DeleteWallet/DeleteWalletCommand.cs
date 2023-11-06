@@ -21,16 +21,16 @@ namespace Application.Wallets.Commands.DeleteWallet
             }
 
             // Wallet not found
-            var walletNotFound = _database.Wallets.SingleOrDefault(w => w.Id == model.Id) == null;
+            var walletNotFound = _database.Wallets.SingleOrDefault(w => w.Id == model.WalletId) == null;
             if (walletNotFound)
             {
-                return NotFound($"Cannot delete wallet with ID \"{model.Id}\". Wallet with such ID does not exist.");
+                return NotFound($"Cannot delete wallet with ID \"{model.WalletId}\". Wallet with such ID does not exist.");
             }
 
             try
             {
                 // Deleting wallet
-                var walletToRemove = _database.Wallets.Single(w => w.Id == model.Id);
+                var walletToRemove = _database.Wallets.Single(w => w.Id == model.WalletId);
                 _database.Wallets.Remove(walletToRemove);
                 _database.Save();
 
