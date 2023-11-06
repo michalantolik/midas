@@ -77,6 +77,33 @@ namespace Persistence.Wallets
                     CurrencyCode = "EGP",
                     Amount = 29852.98m,
                     Timestamp = DateTimeOffset.Parse("01/21/2022 5:24:15 PM +01:00"),
+                },
+                new
+                {
+                    Id = 6,
+                    WalletId = 2,
+                    TransactionType = TransactionType.Deposit,
+                    CurrencyCode = "CUP",
+                    Amount = 9500.00m,
+                    Timestamp = DateTimeOffset.Parse("01/25/2022 9:20:15 PM +01:00"),
+                },
+                new
+                {
+                    Id = 7,
+                    WalletId = 2,
+                    TransactionType = TransactionType.Deposit,
+                    CurrencyCode = "PEN",
+                    Amount = 32000.00m,
+                    Timestamp = DateTimeOffset.Parse("01/26/2022 4:54:15 PM +01:00"),
+                },
+                new
+                {
+                    Id = 8,
+                    WalletId = 3,
+                    TransactionType = TransactionType.Deposit,
+                    CurrencyCode = "KES",
+                    Amount = 55000.00m,
+                    Timestamp = DateTimeOffset.Parse("02/26/2023 2:50:11 PM +01:00"),
                 }
             );
         }

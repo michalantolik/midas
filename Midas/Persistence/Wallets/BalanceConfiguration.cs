@@ -43,6 +43,27 @@ namespace Persistence.Wallets
                     WalletId = 1,
                     CurrencyCode = "EGP",
                     Amount = 29852.98m
+                },
+                new
+                {
+                    Id = 4,
+                    WalletId = 2,
+                    CurrencyCode = "CUP",
+                    Amount = 9500.00m
+                },
+                new
+                {
+                    Id = 5,
+                    WalletId = 2,
+                    CurrencyCode = "PEN",
+                    Amount = 32000.00m
+                },
+                new
+                {
+                    Id = 6,
+                    WalletId = 3,
+                    CurrencyCode = "KES",
+                    Amount = 55000.00m
                 }
             ); ;
         }

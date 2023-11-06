@@ -32,6 +32,16 @@ namespace Persistence.Wallets
                 {
                     Id = 1,
                     Name = "Atena"
+                },
+                new
+                {
+                    Id = 2,
+                    Name = "Hermes"
+                },
+                new
+                {
+                    Id = 3,
+                    Name = "Demeter"
                 }
             );
         }
