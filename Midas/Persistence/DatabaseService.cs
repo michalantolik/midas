@@ -11,7 +11,7 @@ namespace Persistence
     /// <inheritdoc />
     public class DatabaseService : DbContext, IDatabaseService
     {
-        private const string SqlDbConnectionStringName = "MidasRatesSqlConnectionString";
+        private const string SqlDbConnectionStringName = "MidasSqlDbConnectionString";
 
         private readonly IConfiguration _configuration;
 
