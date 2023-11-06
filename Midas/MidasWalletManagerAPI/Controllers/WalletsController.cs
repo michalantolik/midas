@@ -1,4 +1,5 @@
 using Application.Wallets.Commands.ConvertRequest;
+using Application.Wallets.Commands.DeleteWallet;
 using Application.Wallets.Commands.DepositRequest;
 using Application.Wallets.Commands.WithdrawRequest;
 using Application.Wallets.Queries.GetWalletsList;
@@ -12,17 +13,23 @@ namespace WalletsAPI.Controllers
     public class WalletsController : ControllerBase
     {
         private readonly IGetWalletsListQuery _getWalletsListQuery;
-        private readonly IDepositRequestCommand _depositRequestCommand;
+        private readonly ICreateWalletCommand _createWalletCommand;
+        private readonly IDeleteWalletCommand _deleteWalletCommand;
+        private readonly ICreateWalletCommand _depositRequestCommand;
         private readonly IWithdrawRequestCommand _withdrawRequestCommand;
         private readonly IConvertRequestCommand _convertRequestCommand;
 
         public WalletsController(
             IGetWalletsListQuery getWalletsListQuery,
-            IDepositRequestCommand depositRequestCommand,
+            ICreateWalletCommand createWalletCommand,
+            IDeleteWalletCommand deleteWalletCommand,
+            ICreateWalletCommand depositRequestCommand,
             IWithdrawRequestCommand withdrawRequestCommand,
             IConvertRequestCommand convertRequestCommand)
         {
             _getWalletsListQuery = getWalletsListQuery;
+            _createWalletCommand = createWalletCommand;
+            _deleteWalletCommand = deleteWalletCommand;
             _depositRequestCommand = depositRequestCommand;
             _withdrawRequestCommand = withdrawRequestCommand;
             _convertRequestCommand = convertRequestCommand;
@@ -46,9 +53,31 @@ namespace WalletsAPI.Controllers
             return Ok(dtos);
         }
 
+        // POST: api/wallets/create
+        [HttpPost("create/{walletName}")]
+        public IActionResult CreateWallet(string walletName)
+        {
+            var model = new CreateWalletModel { Name = walletName };
+
+            var result = _createWalletCommand.Execute(model);
+
+            return result;
+        }
+
+        // POST: api/wallets/delete
+        [HttpPost("delete/{walletId}")]
+        public IActionResult DeleteWallet(int walletId)
+        {
+            var model = new DeleteWalletModel { Id = walletId };
+
+            var result = _deleteWalletCommand.Execute(model);
+
+            return result;
+        }
+
         // POST: api/wallets/deposit
         [HttpPost("deposit")]
-        public IActionResult DepositMoney([FromBody] DepositRequestModel model)
+        public IActionResult DepositMoney([FromBody] CreateWalletModel model)
         {
             var result = _depositRequestCommand.Execute(model);
 

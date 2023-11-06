@@ -8,19 +8,23 @@ namespace Persistence.Wallets
     {
         public void Configure(EntityTypeBuilder<Wallet> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(w => w.Id);
 
-            builder.Property(x => x.Name)
+            builder.Property(w => w.Name)
                 .IsRequired();
 
-            builder.HasMany(x => x.Balances);
+            builder.HasMany(w => w.Balances)
+                   .WithOne(b => b.Wallet)
+                   .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Navigation(x => x.Balances)
+            builder.Navigation(w => w.Balances)
                 .AutoInclude();
 
-            builder.HasMany(x => x.Transactions);
+            builder.HasMany(w => w.Transactions)
+                   .WithOne(t => t.Wallet)
+                   .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Navigation(x => x.Transactions)
+            builder.Navigation(w => w.Transactions)
                 .AutoInclude();
 
             builder.HasData(
