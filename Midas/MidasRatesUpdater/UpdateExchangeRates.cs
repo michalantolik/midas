@@ -19,7 +19,7 @@ namespace ExchangeRatesUpdater
         }
 
         [Function("UpdateExchangeRates")]
-        public void Run([TimerTrigger("*/30 * * * * *")] MyInfo myTimer)
+        public void Run([TimerTrigger("*/5 * * * * *")] MyInfo myTimer)
         {
             _logger.LogInformation($"C# Timer trigger function started execution at: {DateTime.Now}");
 
