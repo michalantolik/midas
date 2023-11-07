@@ -61,7 +61,43 @@ Overview:
 - Create/Delete wallets, Deposit/Withdraw/Convert money in/from wallet 👉 [WalletsController.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasWalletManagerAPI/Controllers/WalletsController.cs)
 - List wallet transactions 👉 [TransactionsController.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasWalletManagerAPI/Controllers/TransactionsController.cs)
 
-## How to run and test this repository locally
+## How test this application running in Azure
+
+**This application has been deployed to Azure using:**
+- Azure Functions
+- Azure SQL DB
+- Azure App Service + API management
+
+**Feel free to play around with exposed Azure Web API and mess-up my Azure SQL DB:**<br/><br/>
+List exchange rates:<br/>
+`https://midas-wallets-apim.azure-api.net/api/exchangerates`<br/><br/>
+List wallets (with balances):<br/>
+`https://midas-wallets-apim.azure-api.net/api/wallets`<br/><br/>
+List wallet with specific {walletId} (with balances):<br/>
+`https://midas-wallets-apim.azure-api.net/api/wallets/{walletId}`<br/><br/>
+e.g. `https://midas-wallets-apim.azure-api.net/api/wallets/2`<br/><br/>
+Create new wallet with a given {walletName}:<br/>
+`https://midas-wallets-apim.azure-api.net/api/wallets/create/{walletName}`<br/><br/>
+e.g. `https://midas-wallets-apim.azure-api.net/api/wallets/create/Zeus`<br/><br/>
+Delete wallet with specific {walletId}:<br/>
+`https://midas-wallets-apim.azure-api.net/api/wallets/delete/{walletId}`<br/><br/>
+e.g. `https://midas-wallets-apim.azure-api.net/api/wallets/delete/7`<br/><br/>
+Deposit {amount} of {currencyCode} in a wallet with {walletId}:<br/>
+`https://midas-wallets-apim.azure-api.net/api/wallets/{walletId}/deposit/{amount}/{currencyCode}`<br/><br/>
+e.g. `https://midas-wallets-apim.azure-api.net/api/wallets/2/deposit/637.35/BSD`<br/><br/>
+Withdraw {amount} of {currencyCode} from a wallet with {walletId}:<br/>
+`https://midas-wallets-apim.azure-api.net/api/wallets/{walletId}/withdraw/{amount}/{currencyCode}`<br/><br/>
+e.g. `https://midas-wallets-apim.azure-api.net/api/wallets/2/withdraw/2542.35/CUP`<br/><br/>
+Convert {sourceAmountToConvert} of {sourceCurrencyCode} into {targetCurrencyCode} for a wallet with {walletId}:<br/>
+`https://midas-wallets-apim.azure-api.net/api/wallets/{walletId}/convert/{sourceAmountToConvert}/{sourceCurrencyCode}/{targetCurrencyCode}`<br/><br/>
+e.g. `https://midas-wallets-apim.azure-api.net/api/wallets/2/convert/250/PEN/BSD`<br/><br/>
+List all transactions done for all wallets:<br/>
+`https://midas-wallets-apim.azure-api.net/api/transactions`<br/><br/>
+List all transactions done for a wallet with {walletId}:<br/>
+`https://midas-wallets-apim.azure-api.net/api/transactions/{walletId}`<br/><br/>
+e.g. `https://midas-wallets-apim.azure-api.net/api/transactions/2`<br/><br/>
+
+## How to run and test this application locally
 
 ### Prerequisites
 
@@ -76,9 +112,9 @@ Overview:
 4. Press F5 in VS 2022 to start solution.<br/>
 5. Solution will be built and two windows will appear.<br/>
 6. Azure Function which updates Exchange Rates DB every 30 second by downloading them from NBP Web API:<br/><br/>
-<img src="https://michalantolik.blob.core.windows.net/midas/azure_function_running.png" width=600/>
+<img src="https://michalantolik.blob.core.windows.net/midas/azure_function_running.png" width=700/>
 7. Swagger page for testing WalletAPI - make your calls here and observe changes in your SQL Local DB:<br/><br/>
-<img src="https://michalantolik.blob.core.windows.net/midas/web_api_running.png" width=600/>
+<img src="https://michalantolik.blob.core.windows.net/midas/web_api_running_2.png" width=700/>
 
 ## Browsing Midas Database
 
@@ -92,7 +128,7 @@ Overview:
 ## Initial content of the Midas Database
 
 - Once, run the solution, Midas database will be created (if not exist).
-- Database will be seeded with example wallet (with example transactions)
+- Database will be seeded with example wallets
 - ExchangeRates table will be periodcally updated by downloading exchange rates using NBP Web API
 
 ### Wallets
