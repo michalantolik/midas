@@ -1,6 +1,7 @@
 using Application.CurrencyConversion;
 using Application.ExchangeRates.Commands.Queries;
 using Application.Interfaces;
+using Application.Transactions.Queries;
 using Application.Wallets.Commands.ConvertRequest;
 using Application.Wallets.Commands.DeleteWallet;
 using Application.Wallets.Commands.DepositRequest;
@@ -25,6 +26,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDatabaseService, DatabaseService>();
 builder.Services.AddScoped<IGetExchangeRatesQuery, GetExchangeRatesQuery>();
+builder.Services.AddScoped<IGetTransactionsQuery, GetTransactionsQuery>();
 builder.Services.AddScoped<IGetWalletsListQuery, GetWalletsListQuery>();
 builder.Services.AddScoped<ICreateWalletCommand, CreateWalletCommand>();
 builder.Services.AddScoped<IDeleteWalletCommand, DeleteWalletCommand>();
