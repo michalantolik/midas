@@ -17,7 +17,7 @@ namespace WalletsAPI.Controllers
         /// <summary>
         /// Get all exchange rates
         /// </summary>
-        /// <remarks>GET: exchangerates</remarks>
+        /// <remarks>GET: api/exchangerates</remarks>
         [HttpGet()]
         public ActionResult<IEnumerable<ExchangeRateModel>> GetAllExchangeRates()
         {
