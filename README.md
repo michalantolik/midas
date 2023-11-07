@@ -56,8 +56,10 @@ Overview:
 
 ## Core classes (entry points)
 
-- Downloading exchange rates from NBP Web API: [UpdateExchangeRates.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasRatesUpdater/UpdateExchangeRates.cs)
-- Deposit/Withdraw/Convert money in/from wallet: [WalletsController.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasWalletManagerAPI/Controllers/WalletsController.cs)
+- Download exchange rates from NBP Web API 👉 [UpdateExchangeRates.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasRatesUpdater/UpdateExchangeRates.cs)
+- List exchange rates 👉 [ExchangeRatesController.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasWalletManagerAPI/Controllers/ExchangeRatesController.cs) 
+- Create/Delete wallets, Deposit/Withdraw/Convert money in/from wallet 👉 [WalletsController.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasWalletManagerAPI/Controllers/WalletsController.cs)
+- List wallet transactions 👉 [TransactionsController.cs](https://github.com/michalantolik/midas/blob/main/Midas/MidasWalletManagerAPI/Controllers/TransactionsController.cs)
 
 ## How to run and test this repository locally
 
